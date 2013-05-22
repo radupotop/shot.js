@@ -17,7 +17,9 @@ phantom.create(function(err, ph) {
  */
 function shot(body, resp) {
     
-    var filename = 'shot-'+now()+'.png';
+    var sanitizedUrl = body.url.replace(/[^a-z0-9]+/gi, '-');
+    var filename = sanitizedUrl+'-'+now()+'.png';
+    
     console.log(body, staticDir+filename);
     
     phantomInstance.createPage(function(err, page) {
@@ -62,6 +64,11 @@ app.configure(function() {
  * Routes
  */
 app.post('/shot', function(req, resp) {
+    
+    if(!req.body.url) {
+        resp.json(403, 'No url specified');
+    }
+    
     shot(req.body, resp);
 });
 
