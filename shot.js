@@ -17,10 +17,8 @@ phantom.create(function(err, ph) {
  */
 function shot(body, resp) {
     
-    console.log(body);
-    
-    var time = now();
-    var filename = 'shot-'+time+'.png';
+    var filename = 'shot-'+now()+'.png';
+    console.log(body, staticDir+filename);
     
     phantomInstance.createPage(function(err, page) {
         
@@ -31,12 +29,9 @@ function shot(body, resp) {
         
         page.open(body.url, function(err, status) {
             page.render(staticDir+filename);
-            console.log(staticDir+filename);
-            
             resp.json(200, {
                 'url': appUrl+filename 
             });
-            
         });
         
         return filename;
@@ -67,7 +62,7 @@ app.configure(function() {
  * Routes
  */
 app.post('/shot', function(req, resp) {
-    var filename = shot(req.body, resp);
+    shot(req.body, resp);
 });
 
 /**
