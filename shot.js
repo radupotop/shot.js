@@ -67,13 +67,14 @@ app.post('/shot', function(req, resp) {
     
     if(!req.body.url) {
         resp.json(403, 'No url specified');
+    } else {
+        shot(req.body, resp);
     }
     
-    shot(req.body, resp);
 });
 
 /**
  * Listen
  */
-app.listen(8080);
+app.listen(8081);
 console.log('Listening on '+appUrl);
