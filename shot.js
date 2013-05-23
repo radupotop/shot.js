@@ -2,7 +2,7 @@ var express = require('express');
 var phantom = require('node-phantom');
 var phantomInstance;
 
-var appUrl = 'http://radu.sm.lo:8080/';
+var appUrl = 'http://radu.sm.lo:8081/';
 var staticDir = 'shots/';
 
 /**
