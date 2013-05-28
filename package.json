@@ -9,5 +9,8 @@
   "repository": {
     "type": "hg",
     "url": "ssh://hg@bitbucket.org/wooptoo/shot.js" 
+  },
+  "engines": {
+      "node": "0.10.7"
   }
 }
