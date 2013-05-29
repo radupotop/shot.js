@@ -2,7 +2,7 @@ var express = require('express');
 var phantom = require('node-phantom');
 var phantomInstance;
 
-var appUrl = 'http://radu.sm.lo:8081/';
+var appUrl = 'http://localhost:8080/';
 var staticDir = 'shots/';
 
 /**
@@ -76,5 +76,5 @@ app.post('/shot', function(req, resp) {
 /**
  * Listen
  */
-app.listen(8081);
+app.listen(8080);
 console.log('Listening on '+appUrl);
